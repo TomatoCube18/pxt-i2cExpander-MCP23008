@@ -76,22 +76,22 @@ enum ADDRESS {                     // address for MCP23008 (configurable by tyin
  */
 "//% weight=100 color=#0fbc12 icon="
 namespace MCP23008 {
-    //% block="アドレスを設定する |addr %addr" 
+    //% block="Set the i2c Address |addr %addr" 
     export function setAddr(addr: ADDRESS) {
         _addr = addr;
     }
 
-    //% block="GPIO入出力を変更する GPIOA %val1"
+    //% block="GPIO Change Input/Output GPIO %val1"
     export function SetIoDir(val1: number) {
         writeReg(MCP23008REG.IODIR, val1)
     }
 
-    //% block="GPIOプルアップを設定する GPIOA %val1"
+    //% block="GPIO Setup Pull-ups GPIO %val1"
     export function SetPullUp(val1: number, val2: number) {
         writeReg(MCP23008REG.GPPU, val1)
     }
 
-    //% block="バッファに値を読み込む"
+    //% block="Read value input buffer"
     export function ReadToBuffer() {
         inputABuffer = readReg(MCP23008REG.GPIO)
     }
