@@ -112,26 +112,19 @@ namespace MCP23008 {
         pins.i2cWriteNumber(
             _addr,
             reg,
-            NumberFormat.Int8LE,
-            true
+            NumberFormat.UInt8BE
         )
-        return pins.i2cReadNumber(_addr, NumberFormat.Int8LE, false)
+        return pins.i2cReadNumber(_addr, NumberFormat.UInt8BE)
     }
 
     //% block
     export function writeReg(reg: MCP23008REG, val: number) {
-        pins.i2cWriteNumber(
-            _addr,
-            reg,
-            NumberFormat.Int8LE,
-            true
-        )
-        pins.i2cWriteNumber(
-            _addr,
-            val,
-            NumberFormat.Int8LE,
-            false
-        )
+        let buf = pins.createBuffer(2);
+        buf[0] = reg;
+        buf[1] = val;
+
+        pins.i2cWriteBuffer(_addr, buf);
+
     }
 
 
