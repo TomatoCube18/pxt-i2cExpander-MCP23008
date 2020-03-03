@@ -6,7 +6,7 @@
     },
     "description": "Blocks to control the MCP23008",
     "files": [
-        "MCP23017.ts",
+        "MCP23008.ts",
         "README.md"
     ],
     "public": true,
