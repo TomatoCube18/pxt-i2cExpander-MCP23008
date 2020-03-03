@@ -87,7 +87,7 @@ namespace MCP23008 {
     }
 
     //% block="GPIO Setup Pull-ups GPIO %val1"
-    export function SetPullUp(val1: number, val2: number) {
+    export function SetPullUp(val1: number) {
         writeReg(MCP23008REG.GPPU, val1)
     }
 
