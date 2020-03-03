@@ -81,17 +81,17 @@ namespace MCP23008 {
         _addr = addr;
     }
 
-    //% block="GPIO Change Input/Output GPIO %val1"
-    export function SetIoDir(val1: number) {
-        writeReg(MCP23008REG.IODIR, val1)
+    //% block="Change GPIO Input/Output direction GPIO %val"
+    export function SetIoDir(val: number) {
+        writeReg(MCP23008REG.IODIR, val)
     }
 
-    //% block="GPIO Setup Pull-ups GPIO %val1"
-    export function SetPullUp(val1: number) {
-        writeReg(MCP23008REG.GPPU, val1)
+    //% block="GPIO Setup Pull-ups GPIO %val"
+    export function SetPullUp(val: number) {
+        writeReg(MCP23008REG.GPPU, val)
     }
 
-    //% block="Read value input buffer"
+    //% block="Read value to input buffer"
     export function ReadToBuffer() {
         inputABuffer = readReg(MCP23008REG.GPIO)
     }
@@ -104,6 +104,19 @@ namespace MCP23008 {
         else {
             return 0
         }
+    }
+
+    //% block
+    export function WritePin(pin: PINS, val: number): number {
+
+        if (number == 1) {
+            inputABuffer | (0x01 << pin)
+        }
+        else {
+            inputABuffer & ~(0x01 << pin)
+
+        }
+        writeReg(MCP23008REG.GPIO, val)
     }
 
 
