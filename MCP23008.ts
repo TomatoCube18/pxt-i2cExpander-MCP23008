@@ -115,7 +115,7 @@ namespace MCP23008 {
         else {
             inputABuffer & (~(0x01 << pin))
         }
-        writeReg(MCP23008REG.GPIO, val)
+        writeReg(MCP23008REG.GPIO, inputABuffer)
     }
 
 

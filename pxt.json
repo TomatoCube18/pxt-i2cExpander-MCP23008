@@ -1,6 +1,6 @@
 {
     "name": "MCP23008",
-    "version": "0.2.0",
+    "version": "0.2.5",
     "dependencies": {
         "core": "*"
     },
