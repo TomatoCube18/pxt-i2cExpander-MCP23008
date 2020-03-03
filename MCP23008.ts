@@ -81,8 +81,8 @@ namespace MCP23008 {
         _addr = addr;
     }
 
-    //% block="Change GPIO Input/Output direction GPIO %val"
-    export function SetIoDir(val: number) {
+    //% block="GPIO Change Input/Output GPIO %val"
+    export function SetIoDir(val1: number) {
         writeReg(MCP23008REG.IODIR, val)
     }
 
@@ -91,7 +91,7 @@ namespace MCP23008 {
         writeReg(MCP23008REG.GPPU, val)
     }
 
-    //% block="Read value to input buffer"
+    //% block="Read value input buffer"
     export function ReadToBuffer() {
         inputABuffer = readReg(MCP23008REG.GPIO)
     }
@@ -124,19 +124,28 @@ namespace MCP23008 {
         pins.i2cWriteNumber(
             _addr,
             reg,
-            NumberFormat.UInt8BE
+            NumberFormat.Int8LE,
+            true
         )
-        return pins.i2cReadNumber(_addr, NumberFormat.UInt8BE)
+        return pins.i2cReadNumber(_addr, NumberFormat.Int8LE, false)
     }
+
+
 
     //% block
     export function writeReg(reg: MCP23008REG, val: number) {
-        let buf = pins.createBuffer(2);
-        buf[0] = reg;
-        buf[1] = val;
-
-        pins.i2cWriteBuffer(_addr, buf);
-
+        pins.i2cWriteNumber(
+            _addr,
+            reg,
+            NumberFormat.Int8LE,
+            true
+        )
+        pins.i2cWriteNumber(
+            _addr,
+            val,
+            NumberFormat.Int8LE,
+            false
+        )
     }
 
 
