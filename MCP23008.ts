@@ -107,14 +107,13 @@ namespace MCP23008 {
     }
 
     //% block
-    export function WritePin(pin: PINS, val: number): number {
+    export function WritePin(pin: PINS, val: number) {
 
         if (number == 1) {
             inputABuffer | (0x01 << pin)
         }
         else {
             inputABuffer & ~(0x01 << pin)
-
         }
         writeReg(MCP23008REG.GPIO, val)
     }
