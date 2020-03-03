@@ -82,7 +82,7 @@ namespace MCP23008 {
     }
 
     //% block="GPIO Change Input/Output GPIO %val"
-    export function SetIoDir(val1: number) {
+    export function SetIoDir(val: number) {
         writeReg(MCP23008REG.IODIR, val)
     }
 
@@ -106,6 +106,7 @@ namespace MCP23008 {
         }
     }
 
+
     //% block
     export function readReg(reg: MCP23008REG): number {
         pins.i2cWriteNumber(
@@ -116,8 +117,6 @@ namespace MCP23008 {
         )
         return pins.i2cReadNumber(_addr, NumberFormat.Int8LE, false)
     }
-
-
 
     //% block
     export function writeReg(reg: MCP23008REG, val: number) {
