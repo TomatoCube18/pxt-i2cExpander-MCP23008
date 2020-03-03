@@ -1,0 +1,15 @@
+{
+    "name": "MCP23008",
+    "version": "0.0.1",
+    "dependencies": {
+        "core": "*"
+    },
+    "description": "Blocks to control the MCP23008",
+    "files": [
+        "MCP23017.ts",
+        "README.md"
+    ],
+    "public": true,
+    "installedVersion": "workspace:6f9db1a4-4d7c-4572-7420-64746ac39014",
+    "preferredEditor": "tsprj"
+}
